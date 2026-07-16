@@ -1,8 +1,6 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
 export default clerkMiddleware();
-
-const isPublic = createRouteMatcher
 
 export const config = {
   matcher: [
