@@ -19,6 +19,18 @@ export default function Page() {
     setBackgroundLoading(false);
   };
 
+  const handleClientError = async () => {
+    throw new Error("Client Error: Something went wrong!");
+  };
+
+  const handleApiError = async () => {
+    await fetch("/api/demo/error", { method: "POST" });
+  };
+
+  const handleInngestError = async () => {
+    await fetch("/api/demo/inngest-error", { method: "POST" });
+  };
+
   return (
     <div>
       <Button disabled={blockingLoading} onClick={handleBlocking}>
@@ -28,6 +40,20 @@ export default function Page() {
       <Button disabled={backgroundLoading} onClick={handleBackground}>
         {backgroundLoading ? "loading" : "Background"}
       </Button>
+
+      <div className=" mt-5 space-x-3">
+        <Button onClick={handleClientError} variant={"destructive"}>
+          Client Error
+        </Button>
+
+        <Button onClick={handleApiError} variant={"destructive"}>
+          API Error
+        </Button>
+
+        <Button onClick={handleInngestError} variant={"destructive"}>
+          Inngest Error
+        </Button>
+      </div>
     </div>
   );
 }
